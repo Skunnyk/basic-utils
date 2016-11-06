@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Basic configuration for a new debian instance
-apt install git lsb-release vim bash-completion curl
+apt install git lsb-release vim bash-completion curl bzip2 rsync
 
 # Tune sources.list
 
