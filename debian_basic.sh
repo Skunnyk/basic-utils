@@ -5,6 +5,8 @@ set -euo pipefail
 # Basic configuration for a new debian instance
 apt install git lsb-release vim bash-completion curl
 
+# Tune sources.list
+
 cat <<EOF > /etc/apt/sources.list
 ## Debian.org FR mirror
 deb http://ftp.fr.debian.org/debian/ $(lsb_release -cs) main contrib non-free
@@ -30,5 +32,12 @@ EOF
 
 curl https://www.dotdeb.org/dotdeb.gpg | apt-key add -
 
+# don't install recommends and suggests
+cat << EOF > /etc/apt/apt.conf.d/80local
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";
+EOF
+
 apt update
+
 
