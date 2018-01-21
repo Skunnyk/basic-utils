@@ -1,6 +1,6 @@
 #/bin/bash
 
-pacstrap /mnt base xorg-server xf86-video-radeon xf86-video-nouveau xorg-xinit firefox chromium xfce4 gvfs git vim thunderbird hexchat base-devel pulseaudio pulseaudio-alsa pulseaudio-bluetooth pavucontrol mesa-demos accountsservice lightdm lightdm-gtk-greeter xfce4-pulseaudio-plugin dmidecode light-locker openssh rsync zsh curl
+pacstrap /mnt base xorg-server xf86-video-radeon xf86-video-nouveau xorg-xinit firefox chromium xfce4 gvfs git vim thunderbird hexchat base-devel pulseaudio pulseaudio-alsa pulseaudio-bluetooth pavucontrol mesa-demos accountsservice lightdm lightdm-gtk-greeter xfce4-pulseaudio-plugin dmidecode light-locker openssh rsync zsh curl sudo
 genfstab -U /mnt >> /mnt/etc/fstab
 cp /etc/locale.conf /mnt/etc/locale.conf
 cp /etc/vconsole.conf /mnt/etc/vconsole.conf
