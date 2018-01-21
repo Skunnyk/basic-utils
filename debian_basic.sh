@@ -24,13 +24,13 @@ deb http://ftp.fr.debian.org/debian $(lsb_release -cs)-backports main contrib no
 
 EOF
 
-cat << EOF > /etc/apt/sources.list.d/dotdeb.list
-
-deb http://packages.dotdeb.org $(lsb_release -cs) all
-
-EOF
-
-curl https://www.dotdeb.org/dotdeb.gpg | apt-key add -
+#cat << EOF > /etc/apt/sources.list.d/dotdeb.list
+#
+#deb http://packages.dotdeb.org $(lsb_release -cs) all
+#
+#EOF
+#
+#curl https://www.dotdeb.org/dotdeb.gpg | apt-key add -
 
 # don't install recommends and suggests
 cat << EOF > /etc/apt/apt.conf.d/80local
