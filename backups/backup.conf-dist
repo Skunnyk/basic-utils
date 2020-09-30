@@ -3,5 +3,6 @@ LOCAL_SOURCE_DIR="/path/to/wwwroot"
 LOCAL_BACKUP_DIR_ROOT="/home/backups/"
 SSH_REMOTE="user@remote.example.com"
 SSH_DESTDIR="/path/on/remote/"
-HISTORY=3
+HISTORY_FILE=3
+HISTORY_SQL=3
 RSYNC_EXCLUDE=""

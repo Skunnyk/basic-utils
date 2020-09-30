@@ -4,8 +4,6 @@ set -euo pipefail
 SCRIPT_PATH=$(dirname "$0")
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/root/bin
 YESTERDAY="$(date -d "1 day ago" +%Y%m%d)"
-HISTORY=3
-OLDBACKUP="$(date -d "$HISTORY day ago" +%Y%m%d)"
 
 # Source the config file with all path / usernames
 if [ -f "${SCRIPT_PATH}/backup.conf" ]; then
@@ -13,6 +11,8 @@ if [ -f "${SCRIPT_PATH}/backup.conf" ]; then
 else 
 	echo "Please create a backup.conf from backup.conf-dist with correct variables"
 fi
+
+OLDBACKUP="$(date -d "$HISTORY_FILE day ago" +%Y%m%d)"
 
 # On vire les backups d'il y a $HISTORY jours
 if [ -d "${LOCAL_BACKUP_DIR_ROOT}/web/${OLDBACKUP}" ]; then

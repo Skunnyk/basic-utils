@@ -11,7 +11,7 @@ else
 	echo "Please create a backup.conf from backup.conf-dist with correct variables"
 fi
 # MySQL
-OLDBACKUP="$(date -d "${HISTORY} day ago" +%Y%m%d)"
+OLDBACKUP="$(date -d "${HISTORY_SQL} day ago" +%Y%m%d)"
 LOCAL_BACKUP_DIR="${LOCAL_BACKUP_DIR_ROOT}/mysql/$(date +%Y%m%d)"
 
 mkdir -p "${LOCAL_BACKUP_DIR}"
