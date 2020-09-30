@@ -4,4 +4,4 @@ LOCAL_BACKUP_DIR="/home/backups/"
 SSH_REMOTE="user@remote.example.com"
 SSH_DESTDIR="/path/on/remote/"
 HISTORY=3
-
+RSYNC_EXCLUDE=""
