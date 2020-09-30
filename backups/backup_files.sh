@@ -15,19 +15,19 @@ else
 fi
 
 # On vire les backups d'il y a $HISTORY jours
-if [ -d "${LOCAL_BACKUP_DIR}/web/${OLDBACKUP}" ]; then
-        rm -rf "${LOCAL_BACKUP_DIR}/web/${OLDBACKUP}"
+if [ -d "${LOCAL_BACKUP_DIR_ROOT}/web/${OLDBACKUP}" ]; then
+        rm -rf "${LOCAL_BACKUP_DIR_ROOT}/web/${OLDBACKUP}"
 fi
 
 # On copie avec hardlink le backup de la veille
-if [ ! -d "${LOCAL_BACKUP_DIR}/web/${YESTERDAY}" ]; then
-        cp -al "${LOCAL_BACKUP_DIR}/web/today/" "${LOCAL_BACKUP_DIR}/web/${YESTERDAY}"
+if [ ! -d "${LOCAL_BACKUP_DIR_ROOT}/web/${YESTERDAY}" ]; then
+        cp -al "${LOCAL_BACKUP_DIR_ROOT}/web/today/" "${LOCAL_BACKUP_DIR_ROOT}/web/${YESTERDAY}"
 fi
 
 # et on rsync :)
-rsync -aHq --delete --exclude="${RSYNC_EXCLUDE}" "${LOCAL_SOURCE_DIR}" "${LOCAL_BACKUP_DIR}/web/today/"
-rsync -aHq --delete "${LOCAL_BACKUP_DIR}/web/" "${SSH_REMOTE}:${SSH_DESTDIR}/web/"
+rsync -aHq --delete --exclude="${RSYNC_EXCLUDE}" "${LOCAL_SOURCE_DIR}" "${LOCAL_BACKUP_DIR_ROOT}/web/today/"
+rsync -aHq --delete "${LOCAL_BACKUP_DIR_ROOT}/web/" "${SSH_REMOTE}:${SSH_DESTDIR}/web/"
 
-tar czf "${LOCAL_BACKUP_DIR}/etc/whole_etc.$YESTERDAY.tar.gz" /etc/ &> /dev/null
-rsync -aHq --delete "${LOCAL_BACKUP_DIR}/etc/" "${SSH_REMOTE}:${SSH_DESTDIR}/etc"
+tar czf "${LOCAL_BACKUP_DIR_ROOT}/etc/whole_etc.$YESTERDAY.tar.gz" /etc/ &> /dev/null
+rsync -aHq --delete "${LOCAL_BACKUP_DIR_ROOT}/etc/" "${SSH_REMOTE}:${SSH_DESTDIR}/etc"
 

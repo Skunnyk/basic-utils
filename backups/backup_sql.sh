@@ -12,7 +12,7 @@ else
 fi
 # MySQL
 OLDBACKUP="$(date -d "${HISTORY} day ago" +%Y%m%d)"
-LOCAL_BACKUP_DIR="${LOCAL_BACKUP_DIR}/mysql/$(date +%Y%m%d)"
+LOCAL_BACKUP_DIR="${LOCAL_BACKUP_DIR_ROOT}/mysql/$(date +%Y%m%d)"
 
 mkdir -p "${LOCAL_BACKUP_DIR}"
 for database in $(mysql -e "show databases" --skip-column-names); do
@@ -23,6 +23,6 @@ cp /etc/mysql/my.cnf "${LOCAL_BACKUP_DIR}/"
 rsync -aHq --delete-after "${LOCAL_BACKUP_DIR}" "${SSH_REMOTE}:${SSH_DESTDIR}/mysql"
 
 # Delete old backups
-if [ -d "${LOCAL_BACKUP_DIR}/mysql/$OLDBACKUP" ]; then
-  rm -rf "${LOCAL_BACKUP_DIR}/mysql/$OLDBACKUP"
+if [ -d "${LOCAL_BACKUP_DIR_ROOT}/mysql/$OLDBACKUP" ]; then
+  rm -rf "${LOCAL_BACKUP_DIR_ROOT}/mysql/$OLDBACKUP"
 fi
