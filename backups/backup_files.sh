@@ -17,6 +17,7 @@ OLDBACKUP="$(date -d "$HISTORY_FILE day ago" +%Y%m%d)"
 # On vire les backups d'il y a $HISTORY jours
 if [ -d "${LOCAL_BACKUP_DIR_ROOT}/web/${OLDBACKUP}" ]; then
         rm -rf "${LOCAL_BACKUP_DIR_ROOT}/web/${OLDBACKUP}"
+        rm -f "${LOCAL_BACKUP_DIR_ROOT}/etc/whole_etc.${OLDBACKUP}.tar.gz"
 fi
 
 # On copie avec hardlink le backup de la veille

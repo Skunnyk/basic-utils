@@ -20,7 +20,7 @@ for database in $(mysql -e "show databases" --skip-column-names); do
   bzip2 "${LOCAL_BACKUP_DIR}/${database}.sql"
 done
 cp /etc/mysql/my.cnf "${LOCAL_BACKUP_DIR}/"
-rsync -aHq --delete-after "${LOCAL_BACKUP_DIR}" "${SSH_REMOTE}:${SSH_DESTDIR}/mysql"
+rsync -aHq --delete-after "${LOCAL_BACKUP_DIR_ROOT}/mysql/" "${SSH_REMOTE}:${SSH_DESTDIR}/mysql/"
 
 # Delete old backups
 if [ -d "${LOCAL_BACKUP_DIR_ROOT}/mysql/$OLDBACKUP" ]; then
